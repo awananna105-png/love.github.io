@@ -1,1 +1,1457 @@
-# love.github.io
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>4 Years of Love - Anniversary Gift</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
+    <style>
+        /* MOBILE FIRST APPROACH - All mobile styles first */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        :root {
+            --pink: #ff5c8d;
+            --purple: #c770ff;
+            --gold: #ffd166;
+            --light-pink: #ffb8d1;
+            --dark: #3a0ca3;
+            --light: #fff0f5;
+        }
+
+        html {
+            font-size: 14px; /* Base font size for mobile */
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            background: linear-gradient(135deg, #3a0ca3 0%, #4361ee 30%, #ff5c8d 70%, #ffb8d1 100%);
+            color: white;
+            line-height: 1.6;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255, 92, 141, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(199, 112, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 209, 102, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        /* Container - Mobile first */
+        .container {
+            width: 100%;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        /* Header Section - Mobile */
+        .header {
+            text-align: center;
+            padding: 30px 0 40px;
+            position: relative;
+            width: 100%;
+        }
+
+        .anniversary-badge {
+            position: relative;
+            top: 0;
+            right: 0;
+            background: linear-gradient(45deg, var(--pink), var(--purple));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 10;
+            transform: rotate(0deg);
+            margin: 0 auto 25px;
+            display: inline-block;
+            width: auto;
+            max-width: 90%;
+        }
+
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+            text-shadow: 0 0 20px rgba(255, 209, 102, 0.5);
+            word-wrap: break-word;
+            line-height: 1.2;
+            padding: 0 10px;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--light);
+            margin-bottom: 15px;
+            font-weight: 300;
+            padding: 0 10px;
+        }
+
+        .urdu-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.2rem;
+            color: var(--light-pink);
+            margin: 20px 0;
+            letter-spacing: 1px;
+            padding: 0 10px;
+        }
+
+        /* Date Timeline - Mobile Column */
+        .date-timeline {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 30px 0;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        .date-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 280px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .date-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .date-year {
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--gold);
+            margin-bottom: 5px;
+        }
+
+        .date-text {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .heart-divider {
+            font-size: 2.2rem;
+            color: var(--pink);
+            animation: pulse 2s infinite;
+            transform: rotate(90deg);
+            margin: 10px 0;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: rotate(90deg) scale(1); }
+            50% { transform: rotate(90deg) scale(1.2); }
+        }
+
+        /* Section Title - Mobile */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            text-align: center;
+            margin: 40px 0 25px;
+            color: var(--light);
+            position: relative;
+            padding: 0 15px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: linear-gradient(to right, var(--pink), var(--gold));
+            border-radius: 2px;
+        }
+
+        /* Love Words - Mobile */
+        .love-words-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+        }
+
+        .love-word {
+            background: linear-gradient(45deg, var(--pink), var(--purple));
+            padding: 12px 18px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transform: translateY(0);
+            opacity: 1;
+            min-width: 120px;
+            text-align: center;
+        }
+
+        /* Gallery - Mobile Column */
+        .gallery-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .photo-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transform: translateY(0);
+            opacity: 1;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .photo-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .photo-frame {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .photo-card:hover .photo-frame img {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(58, 12, 163, 0.9), transparent);
+            padding: 15px;
+            color: white;
+        }
+
+        .photo-number {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--gold);
+            color: var(--dark);
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .photo-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--gold);
+        }
+
+        .photo-caption {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Quotes - Mobile Column */
+        .quotes-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .quote-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transform: translateX(0);
+            opacity: 1;
+            width: 100%;
+        }
+
+        .quote-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .quote-translation {
+            font-style: italic;
+            text-align: center;
+            color: var(--light);
+            opacity: 0.8;
+            font-size: 1rem;
+            border-top: 1px dashed rgba(255, 255, 255, 0.3);
+            padding-top: 12px;
+        }
+
+        /* Message Box - Mobile */
+        .message-box {
+            background: linear-gradient(135deg, rgba(255, 92, 141, 0.2), rgba(199, 112, 255, 0.2));
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            transform: scale(1);
+            opacity: 1;
+            width: 100%;
+        }
+
+        .message-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--pink), var(--gold), var(--purple));
+        }
+
+        .message-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .message-content {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .message-content p {
+            margin-bottom: 15px;
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.2rem;
+            color: var(--pink);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Floating Hearts */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart {
+            position: absolute;
+            color: var(--pink);
+            opacity: 0;
+            font-size: 18px;
+            animation: floatUp 15s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Footer - Mobile */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .footer-text {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 8px;
+            padding: 0 10px;
+        }
+
+        .footer-heart {
+            color: var(--pink);
+            font-size: 1.3rem;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Image Modal - Mobile */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(5px);
+            touch-action: pan-y pinch-zoom;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 95%;
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            color: #f1f1f1;
+            font-size: 35px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #caption {
+            margin: 10px auto 30px;
+            display: block;
+            width: 95%;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            font-size: 1rem;
+        }
+
+        /* Mobile-specific touch improvements */
+        @media (hover: none) and (pointer: coarse) {
+            /* Make sure tap targets are at least 44x44px */
+            .love-word, .photo-card, .quote-card, .anniversary-badge {
+                min-height: 44px;
+            }
+            
+            /* Prevent text selection on tap */
+            .love-word, .photo-card, .quote-card {
+                user-select: none;
+                -webkit-user-select: none;
+            }
+            
+            /* Improve touch feedback */
+            .photo-card:active, .love-word:active, .quote-card:active {
+                transform: scale(0.98);
+                transition: transform 0.1s;
+            }
+        }
+
+        /* Landscape mode for mobile */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .header {
+                padding: 15px 0 20px;
+            }
+            
+            .main-title {
+                font-size: 2.2rem;
+            }
+            
+            .photo-frame {
+                height: 180px;
+            }
+            
+            .gallery-container {
+                gap: 15px;
+            }
+        }
+
+        /* TABLET STYLES */
+        @media (min-width: 768px) {
+            html {
+                font-size: 16px;
+            }
+            
+            .container {
+                padding: 20px;
+                max-width: 95%;
+            }
+            
+            .header {
+                padding: 40px 0 50px;
+            }
+            
+            .anniversary-badge {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                margin: 0;
+                transform: rotate(5deg);
+            }
+            
+            .main-title {
+                font-size: 4rem;
+            }
+            
+            .subtitle {
+                font-size: 1.8rem;
+            }
+            
+            .urdu-title {
+                font-size: 3rem;
+            }
+            
+            .date-timeline {
+                flex-direction: row;
+                gap: 30px;
+            }
+            
+            .heart-divider {
+                transform: rotate(0deg);
+                margin: 0;
+            }
+            
+            @keyframes pulse {
+                0%, 100% { transform: scale(1); }
+                50% { transform: scale(1.2); }
+            }
+            
+            .date-box {
+                width: auto;
+                min-width: 200px;
+            }
+            
+            .section-title {
+                font-size: 2.8rem;
+                margin: 50px 0 30px;
+            }
+            
+            .love-words-container {
+                gap: 15px;
+                padding: 25px;
+            }
+            
+            .love-word {
+                font-size: 1.3rem;
+                padding: 12px 20px;
+            }
+            
+            .gallery-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .photo-frame {
+                height: 280px;
+            }
+            
+            .quotes-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .quote-text {
+                font-size: 1.8rem;
+            }
+            
+            .quote-translation {
+                font-size: 1.1rem;
+            }
+            
+            .message-box {
+                padding: 35px;
+                margin: 50px 0;
+            }
+            
+            .message-title {
+                font-size: 2.2rem;
+            }
+            
+            .message-content {
+                font-size: 1.1rem;
+            }
+            
+            .signature {
+                font-size: 2.8rem;
+            }
+            
+            .modal-content {
+                width: 85%;
+                max-height: 80vh;
+            }
+        }
+
+        /* DESKTOP STYLES */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px;
+                padding: 30px;
+            }
+            
+            .main-title {
+                font-size: 5rem;
+            }
+            
+            .subtitle {
+                font-size: 2rem;
+            }
+            
+            .urdu-title {
+                font-size: 3.5rem;
+            }
+            
+            .date-box {
+                min-width: 220px;
+                padding: 25px 30px;
+            }
+            
+            .date-year {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 3.2rem;
+                margin: 60px 0 40px;
+            }
+            
+            .love-words-container {
+                gap: 20px;
+                padding: 30px;
+            }
+            
+            .love-word {
+                font-size: 1.5rem;
+                padding: 15px 25px;
+            }
+            
+            .gallery-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+            
+            .photo-frame {
+                height: 300px;
+            }
+            
+            .photo-title {
+                font-size: 1.6rem;
+            }
+            
+            .quotes-container {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 30px;
+            }
+            
+            .quote-card {
+                padding: 30px;
+            }
+            
+            .quote-text {
+                font-size: 1.9rem;
+            }
+            
+            .message-box {
+                padding: 50px;
+                margin: 60px 0;
+            }
+            
+            .message-title {
+                font-size: 2.5rem;
+            }
+            
+            .message-content {
+                font-size: 1.2rem;
+            }
+            
+            .signature {
+                font-size: 3.2rem;
+            }
+            
+            .modal-content {
+                max-width: 800px;
+            }
+        }
+
+        /* LARGE DESKTOP */
+        @media (min-width: 1400px) {
+            .gallery-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .quotes-container {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .header, .love-words-container, .gallery-container, .quotes-container, .message-box {
+                break-inside: avoid;
+            }
+            
+            .photo-frame {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="anniversary-badge">
+                <i class="fas fa-heart"></i> 4 Years Together <i class="fas fa-heart"></i>
+            </div>
+
+            <h1 class="main-title" id="mainTitle">Four Years of Love</h1>
+
+            <div class="subtitle">From 10 December 2021 to 10 December 2025</div>
+
+            <div class="urdu-title" id="urduTitle">4th Anniversary</div>
+
+            <div class="date-timeline">
+                <div class="date-box">
+                    <div class="date-year">2021</div>
+                    <div class="date-text">When We Met</div>
+                </div>
+
+                <div class="heart-divider">❤️</div>
+
+                <div class="date-box">
+                    <div class="date-year">2025</div>
+                    <div class="date-text">4 Years Strong</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Love Words Section -->
+        <h2 class="section-title">What I Call You</h2>
+
+        <div class="love-words-container" id="loveWords">
+            <!-- Love words will be added by JavaScript -->
+        </div>
+
+        <!-- Gallery Section -->
+        <h2 class="section-title">Our Beautiful Journey</h2>
+
+        <div class="gallery-container" id="gallery">
+            <!-- Photo cards will be added by JavaScript -->
+        </div>
+
+        <!-- Roman Urdu Quotes Section -->
+        <h2 class="section-title">My Feelings for You</h2>
+
+        <div class="quotes-container" id="quotesContainer">
+            <!-- Quotes will be added by JavaScript -->
+        </div>
+
+        <!-- Message Section -->
+        <div class="message-box" id="messageBox">
+            <h2 class="message-title">To My Everything</h2>
+
+            <div class="message-content">
+                <p>My dearest love, these past four years with you have been the most beautiful journey of my life. From the moment we met on that cold December day in 2021, you've filled my world with warmth, laughter, and unconditional love.</p>
+
+                <p>Mny kabhi Socha hi nh tha k hum itna time sth guzarengy or inshallah agy bhi guzarengy....or isi trh aik dusre se Pyr krty rhengy or zyada hr din ye Pyr brhta jyega or hum or yada qareeb ajyengy aik dusre k...or inshallah isi trh aik din humara nikkah hojyega or Hume pta bhi nh lgega k kese guzr gya wqt pr actually Hume pta lga h k kese mushkilo se guzr rha h wqt lkn koi nh humara ye intzr aik din Hume aik dusre k qareeb krdega or koi duriya nh bs hum sth hongy......Meri SB se bari Khushnseebi ye h k mere pss ap ho apka Pyr h apki loyalty h mere pss isse brh kr mere Liye or Kya hi acha ho skta hai....isi trh bs hum aik dusre k sth rhy aik dusre ko Pyr kren or aik dusre ka sth den achy or Bure wqt mai or bs Khush rhen aik dusre k sth🥺🥺🥺❤️❤️❤️❤️❤️🥺❤️❤️🥺🥺❤️❤️❤️🥺❤️ my confidant, and my greatest supporter. Through all our adventures, quiet moments, challenges, and celebrations, you've been my constant source of strength and happiness.</p>
+
+                <p>These six pictures represent just a fraction of our beautiful memories, but each one holds a special place in my heart. I can't wait to create countless more memories with you in the years to come.</p>
+
+                <p>Thank you for being the amazing man that you are. Thank you for your patience, your kindness, and your unwavering love. Here's to us, to our love, and to forever.</p>
+            </div>
+
+            <div class="signature">Always Yours</div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-text">Made with <span class="footer-heart">❤️</span> for our 4th anniversary</div>
+            <div class="footer-text">10 December 2021 - 10 December 2025</div>
+            <div class="footer-text">A gift from me to you, meri jaan</div>
+        </footer>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+
+    <script>
+        // Roman Urdu quotes with translations (from girl's perspective)
+        const romanUrduQuotes = [
+            {
+                quote: "Tum meri zindagi ka sabse khoobsurat hissa ho.",
+                translation: "You are the most beautiful part of my life."
+            },
+            {
+                quote: "Main tumhare bina apni zindagi ka soch bhi nahi sakti.",
+                translation: "I can't even imagine my life without you."
+            },
+            {
+                quote: "Har lamha tumhare saath guzara hua lamha zindagi ka sabse acha tohfa hai.",
+                translation: "Every moment spent with you is life's best gift."
+            },
+            {
+                quote: "Tum meri khushi ho, meri duniya ho, meri sab kuch ho.",
+                translation: "You are my happiness, my world, my everything."
+            },
+            {
+                quote: "Char saal ho gaye hain, par main ab bhi tumhe pehle din ki tarah chahti hoon.",
+                translation: "It's been 4 years, but I still love you like the first day."
+            },
+            {
+                quote: "Tumhari muskurahat meri duniya ki sabse keemti cheez hai.",
+                translation: "Your smile is the most precious thing in my world."
+            }
+        ];
+
+        // Love words/pet names (from girl to boyfriend)
+        const loveWords = [
+            "Meri Jaan", "Mera Shehzada", "Mera Bacha", "Mera Sher",
+            "Mera Kaka", "Mera Pyaar", "Meri Zindagi", "Meri Duniya",
+            "Mera Humsafar", "Mera Sab Kuch", "Meri Pehli Aur Aakhri Mohabbat",
+            "Mera Dil", "Mera Sapna", "Meri Khushi"
+        ];
+
+        // Photo data - replace with your own images
+        const photoData = [
+            {
+                id: 1,
+                url: "IMG_1651.PNG",
+                title: "My Happiness",
+                caption: "The day my life changed forever - 10 Dec 2021 with you"
+            },
+            {
+                id: 2,
+                url: "IMG_3396.JPG",
+                title: "Your Beautiful Smile",
+                caption: "The smile that makes my heart skip a beat"
+            },
+            {
+                id: 3,
+                url: "in.jpg",
+                title: "Our First Year",
+                caption: "Celebrating one year of us together"
+            },
+            {
+                id: 4,
+                url: "ten.jpg",
+                title: "Quiet Moments",
+                caption: "The simple moments I cherish the most"
+            },
+            {
+                id: 5,
+                url: "IMG_2825.JPG",
+                title: "My Everything",
+                caption: "You are my past, present and future"
+            },
+            {
+                id: 6,
+                url: "one.jpg",
+                title: "Forever to Come",
+                caption: "So many more memories to make together"
+            }
+        ];
+
+        // Create floating hearts
+        function createFloatingHearts() {
+            const heartsContainer = document.getElementById('floatingHearts');
+            const colors = ['#ff5c8d', '#c770ff', '#ffd166', '#ffb8d1'];
+            const heartCount = window.innerWidth < 768 ? 15 : 25;
+
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '❤';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.fontSize = `${Math.random() * 20 + 12}px`;
+                heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+                heart.style.animationDelay = `${Math.random() * 10}s`;
+                heart.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Create love words
+        function createLoveWords() {
+            const container = document.getElementById('loveWords');
+
+            loveWords.forEach((word, index) => {
+                const wordElement = document.createElement('div');
+                wordElement.className = 'love-word';
+                wordElement.textContent = word;
+                wordElement.style.animationDelay = `${index * 0.1}s`;
+                container.appendChild(wordElement);
+            });
+        }
+
+        // Create gallery with clickable images
+        function createGallery() {
+            const gallery = document.getElementById('gallery');
+
+            photoData.forEach(photo => {
+                const card = document.createElement('div');
+                card.className = 'photo-card';
+                card.innerHTML = `
+                    <div class="photo-frame">
+                        <div class="photo-number">${photo.id}</div>
+                        <img src="${photo.url}" alt="${photo.title}" data-id="${photo.id}" class="gallery-image" loading="lazy">
+                        <div class="photo-overlay">
+                            <h3 class="photo-title">${photo.title}</h3>
+                            <p class="photo-caption">${photo.caption}</p>
+                        </div>
+                    </div>
+                `;
+                gallery.appendChild(card);
+            });
+        }
+
+        // Create Roman Urdu quotes
+        function createRomanUrduQuotes() {
+            const container = document.getElementById('quotesContainer');
+
+            romanUrduQuotes.forEach((quote, index) => {
+                const quoteCard = document.createElement('div');
+                quoteCard.className = 'quote-card';
+                quoteCard.innerHTML = `
+                    <div class="quote-text">"${quote.quote}"</div>
+                    <div class="quote-translation">"${quote.translation}"</div>
+                `;
+                container.appendChild(quoteCard);
+            });
+        }
+
+        // Image Lightbox Functionality
+        function setupImageLightbox() {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const captionText = document.getElementById('caption');
+            const closeBtn = document.querySelector('.close');
+            let currentImageIndex = 0;
+
+            // Function to open modal with specific image
+            function openModal(imageIndex) {
+                const photo = photoData[imageIndex];
+                currentImageIndex = imageIndex;
+                
+                modal.style.display = "block";
+                modalImg.src = photo.url;
+                modalImg.alt = photo.title;
+                captionText.innerHTML = `
+                    <h3 style="color: var(--gold); margin-bottom: 10px; font-size: 1.3rem;">${photo.title}</h3>
+                    <p style="font-size: 1rem; opacity: 0.9;">${photo.caption}</p>
+                    <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 5px;">${currentImageIndex + 1} of ${photoData.length}</p>
+                `;
+                
+                // Add zoom animation
+                gsap.fromTo(modalImg, 
+                    { scale: 0.8, opacity: 0 },
+                    { scale: 1, opacity: 1, duration: 0.5, ease: "power3.out" }
+                );
+                
+                // Prevent body scroll when modal is open
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Function to close modal
+            function closeModal() {
+                gsap.to(modal, {
+                    opacity: 0,
+                    duration: 0.3,
+                    onComplete: () => {
+                        modal.style.display = "none";
+                        modal.style.opacity = 1;
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            }
+
+            // Function to show next image
+            function showNextImage() {
+                currentImageIndex = (currentImageIndex + 1) % photoData.length;
+                updateModalImage();
+            }
+
+            // Function to show previous image
+            function showPrevImage() {
+                currentImageIndex = (currentImageIndex - 1 + photoData.length) % photoData.length;
+                updateModalImage();
+            }
+
+            // Function to update modal image with transition
+            function updateModalImage() {
+                const photo = photoData[currentImageIndex];
+                
+                // Fade out current image
+                gsap.to(modalImg, {
+                    opacity: 0,
+                    duration: 0.2,
+                    onComplete: () => {
+                        // Update image and caption
+                        modalImg.src = photo.url;
+                        modalImg.alt = photo.title;
+                        captionText.innerHTML = `
+                            <h3 style="color: var(--gold); margin-bottom: 10px; font-size: 1.3rem;">${photo.title}</h3>
+                            <p style="font-size: 1rem; opacity: 0.9;">${photo.caption}</p>
+                            <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 5px;">${currentImageIndex + 1} of ${photoData.length}</p>
+                        `;
+                        
+                        // Fade in new image
+                        gsap.to(modalImg, {
+                            opacity: 1,
+                            duration: 0.3
+                        });
+                    }
+                });
+            }
+
+            // Add click event to all photo cards
+            document.querySelectorAll('.photo-card').forEach((card, index) => {
+                card.addEventListener('click', function() {
+                    openModal(index);
+                });
+            });
+
+            // Close modal when clicking the close button
+            closeBtn.addEventListener('click', closeModal);
+
+            // Close modal when clicking outside the image
+            modal.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    closeModal();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(event) {
+                if (modal.style.display === "block") {
+                    switch(event.key) {
+                        case 'Escape':
+                            closeModal();
+                            break;
+                        case 'ArrowRight':
+                            showNextImage();
+                            break;
+                        case 'ArrowLeft':
+                            showPrevImage();
+                            break;
+                    }
+                }
+            });
+
+            // Add navigation buttons to modal
+            const prevButton = document.createElement('button');
+            prevButton.innerHTML = '❮';
+            prevButton.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 10px;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                font-size: 24px;
+                padding: 12px;
+                cursor: pointer;
+                border-radius: 50%;
+                transition: all 0.3s;
+                z-index: 1001;
+                display: none;
+            `;
+
+            const nextButton = document.createElement('button');
+            nextButton.innerHTML = '❯';
+            nextButton.style.cssText = `
+                position: absolute;
+                top: 50%;
+                right: 10px;
+                transform: translateY(-50%);
+                background: rgba(0, 0, 0, 0.5);
+                color: white;
+                border: none;
+                font-size: 24px;
+                padding: 12px;
+                cursor: pointer;
+                border-radius: 50%;
+                transition: all 0.3s;
+                z-index: 1001;
+                display: none;
+            `;
+
+            // Show buttons on larger screens
+            if (window.innerWidth > 768) {
+                prevButton.style.display = 'block';
+                nextButton.style.display = 'block';
+            }
+
+            // Update on resize
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 768) {
+                    prevButton.style.display = 'block';
+                    nextButton.style.display = 'block';
+                } else {
+                    prevButton.style.display = 'none';
+                    nextButton.style.display = 'none';
+                }
+            });
+
+            // Add hover effects
+            prevButton.addEventListener('mouseenter', () => {
+                prevButton.style.background = 'rgba(255, 92, 141, 0.8)';
+                prevButton.style.transform = 'translateY(-50%) scale(1.1)';
+            });
+            prevButton.addEventListener('mouseleave', () => {
+                prevButton.style.background = 'rgba(0, 0, 0, 0.5)';
+                prevButton.style.transform = 'translateY(-50%) scale(1)';
+            });
+
+            nextButton.addEventListener('mouseenter', () => {
+                nextButton.style.background = 'rgba(255, 92, 141, 0.8)';
+                nextButton.style.transform = 'translateY(-50%) scale(1.1)';
+            });
+            nextButton.addEventListener('mouseleave', () => {
+                nextButton.style.background = 'rgba(0, 0, 0, 0.5)';
+                nextButton.style.transform = 'translateY(-50%) scale(1)';
+            });
+
+            // Add click events to navigation buttons
+            prevButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showPrevImage();
+            });
+            nextButton.addEventListener('click', function(e) {
+                e.stopPropagation();
+                showNextImage();
+            });
+
+            // Add buttons to modal
+            modal.appendChild(prevButton);
+            modal.appendChild(nextButton);
+
+            // Add swipe support for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            modal.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            
+            modal.addEventListener('touchend', function(e) {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        showNextImage();
+                    } else {
+                        showPrevImage();
+                    }
+                }
+            }
+
+            // Add zoom functionality for desktop (double click)
+            let isZoomed = false;
+            
+            modalImg.addEventListener('dblclick', function() {
+                if (window.innerWidth > 768) {
+                    if (!isZoomed) {
+                        // Zoom in
+                        this.style.transform = 'scale(1.5)';
+                        this.style.cursor = 'zoom-out';
+                        isZoomed = true;
+                    } else {
+                        // Zoom out
+                        this.style.transform = 'scale(1)';
+                        this.style.cursor = 'zoom-in';
+                        isZoomed = false;
+                    }
+                }
+            });
+        }
+
+        // GSAP Animations - Mobile Optimized
+        function setupAnimations() {
+            // Register GSAP plugins
+            gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+            // Main title animation
+            gsap.from("#mainTitle", {
+                duration: 1.5,
+                y: -50,
+                opacity: 0,
+                ease: "elastic.out(1, 0.5)",
+                delay: 0.3
+            });
+
+            // Urdu title animation
+            gsap.from("#urduTitle", {
+                duration: 1.5,
+                y: 30,
+                opacity: 0,
+                ease: "power3.out",
+                delay: 0.8
+            });
+
+            // Date boxes animation
+            gsap.from(".date-box", {
+                duration: 1.2,
+                y: 30,
+                opacity: 0,
+                stagger: 0.2,
+                ease: "power3.out",
+                delay: 1.2
+            });
+
+            // Love words animation - only on larger screens
+            if (window.innerWidth > 768) {
+                gsap.to(".love-word", {
+                    duration: 1,
+                    y: 0,
+                    opacity: 1,
+                    stagger: 0.1,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: "#loveWords",
+                        start: "top 80%",
+                        toggleActions: "play none none reverse",
+                        markers: false
+                    }
+                });
+            } else {
+                // Simpler animation for mobile
+                gsap.to(".love-word", {
+                    duration: 0.8,
+                    opacity: 1,
+                    stagger: 0.05,
+                    ease: "power2.out"
+                });
+            }
+
+            // Photo cards animation
+            gsap.to(".photo-card", {
+                duration: 1,
+                y: 0,
+                opacity: 1,
+                stagger: 0.15,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#gallery",
+                    start: "top 70%",
+                    toggleActions: "play none none reverse",
+                    markers: false
+                }
+            });
+
+            // Quote cards animation
+            gsap.to(".quote-card", {
+                duration: 1,
+                x: 0,
+                opacity: 1,
+                stagger: 0.15,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#quotesContainer",
+                    start: "top 70%",
+                    toggleActions: "play none none reverse",
+                    markers: false
+                }
+            });
+
+            // Message box animation
+            gsap.to("#messageBox", {
+                duration: 1.2,
+                scale: 1,
+                opacity: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: "#messageBox",
+                    start: "top 80%",
+                    toggleActions: "play none none reverse",
+                    markers: false
+                }
+            });
+
+            // Continuous subtle animations
+            gsap.to(".main-title", {
+                duration: 4,
+                y: "+=8",
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+
+            // Heart pulse animation
+            gsap.to(".heart-divider", {
+                duration: 2,
+                scale: 1.2,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            createFloatingHearts();
+            createLoveWords();
+            createGallery();
+            createRomanUrduQuotes();
+            setupAnimations();
+            setupImageLightbox();
+
+            // Add click effect to love words
+            document.querySelectorAll('.love-word').forEach(word => {
+                word.addEventListener('click', function () {
+                    gsap.to(this, {
+                        duration: 0.2,
+                        scale: 1.1,
+                        yoyo: true,
+                        repeat: 1,
+                        ease: "power2.inOut"
+                    });
+                });
+            });
+
+            // Add anniversary badge click effect
+            document.querySelector('.anniversary-badge').addEventListener('click', function () {
+                gsap.to(this, {
+                    duration: 0.5,
+                    rotate: "+=360",
+                    scale: 1.1,
+                    yoyo: true,
+                    repeat: 1,
+                    ease: "power2.inOut"
+                });
+
+                setTimeout(() => {
+                    alert("Happy 4th Anniversary, meri jaan! 💖\n\nEvery day with you is a blessing. I love you more than words can express.");
+                }, 300);
+            });
+
+            // Handle window resize
+            let resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() {
+                    // Recreate floating hearts for new screen size
+                    document.getElementById('floatingHearts').innerHTML = '';
+                    createFloatingHearts();
+                }, 250);
+            });
+        });
+    </script>
+</body>
+</html>
